@@ -1,6 +1,6 @@
 {
   "name": "sprout-bfee-blankrepo",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Sprout template to create a blank repo.",
   "homepage": "https://github.com/brennanfee/sprout-bfee-blankrepo",
   "author": {
@@ -8,9 +8,17 @@
     "email": "github@todaytechsoft.biz",
     "url": "https://github.com/brennanfee"
   },
-  "keywords": [],
-  "devDependencies": {},
+  "bugs": "https://github.com/brennanfee/sprout-bfee-blankrepo/issues",
+  "keywords": [
+    "sprout-template",
+    "bfee",
+    "blankrepo"
+  ],
+  "devDependencies": {
+    "sprout": "^1.2.1"
+  },
   "dependencies": {},
-  "license": "Apache-2.0",
+  "main": "init.js",
+  "license": "MIT",
   "repository": "brennanfee/sprout-bfee-blankrepo"
 }
