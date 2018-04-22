@@ -110,9 +110,14 @@ exports.beforeRender = function(utils, config) {
 
     config.repository = ''
     config.repositoryUrl = ''
+    config.repositoryHomepageUrl = ''
+    config.repositoryBugsUrl = ''
+
     if (config.githubAccount) {
         config.repository = `github:${config.githubAccount}/${config.projectName}`
         config.repositoryUrl = `${config.authorUrl}/${config.projectName}`
+        config.repositoryHomepageUrl = `${config.repositoryUrl}#readme`
+        config.repositoryBugsUrl = `${config.repositoryUrl}/issues`
     }
 
     config.author = ''
@@ -135,46 +140,7 @@ exports.beforeRender = function(utils, config) {
 }
 
 exports.after = function(utils, config) {
-    _writePackageJson(utils, config)
     return _writeLicenseFile(utils, config).then(_executeCommands(utils, config))
-}
-
-function _writePackageJson(utils, config) {
-    let pkg = {
-        name: config.projectName,
-        version: '0.0.1',
-        description: config.projectDescription,
-        repository: '',
-        homepage: '',
-        bugs: '',
-        author: '',
-        keywords: [],
-        devDependencies: {},
-        dependencies: {},
-        license: config.license,
-        scripts: {
-            test: 'echo "Error: no tests specified" && exit 1',
-        },
-    }
-
-    if (config.author) {
-        pkg.author = config.author
-    }
-
-    if (config.repository) {
-        pkg.repository = config.repository
-    }
-
-    if (config.repositoryUrl) {
-        pkg.homepage = `${config.repositoryUrl}#readme`
-        pkg.bugs = `${config.repositoryUrl}/issues`
-    }
-
-    if (config.license === 'UNLICENSED') {
-        pkg.private = true
-    }
-
-    utils.target.write('package.json', JSON.stringify(pkg))
 }
 
 function _writeLicenseFile(utils, config) {

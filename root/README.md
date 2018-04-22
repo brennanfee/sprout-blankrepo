@@ -1,7 +1,7 @@
-# <%= projectName %>
+# <%- projectName %>
 
-<%= projectDescription %>
+<%- projectDescription %>
 
 ## License
 
-<%= license %> © <%= copyrightYear %> <%= authorMarkdownLink %>
+<%- license %> © <%- copyrightYear %> <%- authorMarkdownLink %>

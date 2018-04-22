@@ -1,0 +1,19 @@
+{
+    "name": "<%- projectName %>",
+    "version": "0.0.1",
+    "description": "<%- projectDescription %>",
+    "repository": "<%- repository %>",
+    "homepage": "<%- repositoryHomepageUrl %>",
+    "bugs": "<%- repositoryBugsUrl %>",
+    "author": "<%- author %>",
+    "keywords": [],
+    "devDependencies": {},
+    "dependencies": {},
+    <% if (license === 'UNLICENSED') { %>
+        "private": true,
+    <% } %>
+   "license": "<%- license %>",
+   "scripts": {
+       "test": "echo 'Error: no tests specified' && exit 1"
+   }
+}
