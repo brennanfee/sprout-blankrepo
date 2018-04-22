@@ -22,7 +22,7 @@
         "sprout": "^1.2.1"
     },
     "dependencies": {
-        "github-username": "^4.1.0",
+        "gh-got": "^7.0.0",
         "underscore.string": "^3.3.4"
     },
     "main": "init.js",

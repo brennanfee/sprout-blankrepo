@@ -1,6 +1,6 @@
 const str = require('underscore.string')
 const path = require('path')
-const githubUserName = require('github-username')
+const ghGot = require('gh-got')
 
 const licenses = [
     { name: 'Apache License 2.0', value: 'Apache-2.0' },
@@ -23,15 +23,22 @@ const globalConfig = {}
 exports.before = function(utils) {
     globalConfig.targetPath = utils.target.path
 
-    return utils.target.exec('git config user.name').then(gitUserName => {
-        globalConfig.gitName = gitUserName[0].trim()
-        return utils.target.exec('git config user.email').then(gitUserEmail => {
-            globalConfig.gitEmail = gitUserEmail[0].trim()
-            return githubUserName(globalConfig.gitEmail).then(githubUserName => {
-                globalConfig.githubUserName = githubUserName
+    return ghGot('user').then(
+        result => {
+            globalConfig.githubName = result.body.name
+            globalConfig.githubEmail = result.body.email
+            globalConfig.githubUrl = result.body.html_url
+            globalConfig.githubUserName = result.body.login
+        },
+        () => {
+            return utils.target.exec('git config user.name').then(gitUserName => {
+                globalConfig.gitName = gitUserName[0].trim()
+                return utils.target.exec('git config user.email').then(gitUserEmail => {
+                    globalConfig.gitEmail = gitUserEmail[0].trim()
+                }, () => '')
             }, () => '')
-        }, () => '')
-    }, () => '')
+        }
+    )
 }
 
 exports.configure = [
@@ -58,14 +65,14 @@ exports.configure = [
         name: 'authorName',
         message: "Author's name:",
         default: () => {
-            return globalConfig.gitName || ''
+            return globalConfig.githubName || globalConfig.gitName || ''
         },
     },
     {
         name: 'authorEmail',
         message: "Author's email:",
         default: () => {
-            return globalConfig.gitEmail || ''
+            return globalConfig.githubEmail || globalConfig.gitEmail || ''
         },
     },
     {
@@ -73,6 +80,9 @@ exports.configure = [
         message: 'GitHub username or organization:',
         default: () => {
             return globalConfig.githubUserName || ''
+        },
+        validate(str) {
+            return str.length > 0
         },
     },
     {
@@ -92,10 +102,15 @@ exports.beforeRender = function(utils, config) {
     }
 
     config.authorUrl = ''
+    if (config.githubUrl) {
+        config.authorUrl = config.githubUrl
+    } else {
+        config.authorUrl = `https://github.com/${config.githubAccount}`
+    }
+
     config.repository = ''
     config.repositoryUrl = ''
     if (config.githubAccount) {
-        config.authorUrl = `https://github.com/${config.githubAccount}`
         config.repository = `github:${config.githubAccount}/${config.projectName}`
         config.repositoryUrl = `${config.authorUrl}/${config.projectName}`
     }
