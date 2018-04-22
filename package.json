@@ -2,18 +2,11 @@
     "name": "sprout-bfee-blankrepo",
     "version": "0.0.1",
     "description": "Sprout template to create a blank repo.",
-    "homepage": "https://github.com/brennanfee/sprout-bfee-blankrepo",
-    "author": {
-        "name": "Brennan Fee",
-        "email": "github@todaytechsoft.biz",
-        "url": "https://github.com/brennanfee"
-    },
+    "repository": "github:brennanfee/sprout-bfee-blankrepo",
+    "homepage": "https://github.com/brennanfee/sprout-bfee-blankrepo#readme",
     "bugs": "https://github.com/brennanfee/sprout-bfee-blankrepo/issues",
-    "keywords": [
-        "sprout-template",
-        "bfee",
-        "blankrepo"
-    ],
+    "author": "Brennan Fee <github@todaytechsoft.biz> (https://github.com/brennanfee)",
+    "keywords": ["sprout-template", "bfee", "blankrepo"],
     "devDependencies": {
         "eslint": "^4.19.1",
         "eslint-config-prettier": "^2.9.0",
@@ -26,6 +19,5 @@
         "underscore.string": "^3.3.4"
     },
     "main": "init.js",
-    "license": "MIT",
-    "repository": "brennanfee/sprout-bfee-blankrepo"
+    "license": "Apache-2.0"
 }
