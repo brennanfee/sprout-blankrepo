@@ -1,24 +1,31 @@
 {
-  "name": "sprout-bfee-blankrepo",
-  "version": "0.0.1",
-  "description": "Sprout template to create a blank repo.",
-  "homepage": "https://github.com/brennanfee/sprout-bfee-blankrepo",
-  "author": {
-    "name": "Brennan Fee",
-    "email": "github@todaytechsoft.biz",
-    "url": "https://github.com/brennanfee"
-  },
-  "bugs": "https://github.com/brennanfee/sprout-bfee-blankrepo/issues",
-  "keywords": [
-    "sprout-template",
-    "bfee",
-    "blankrepo"
-  ],
-  "devDependencies": {
-    "sprout": "^1.2.1"
-  },
-  "dependencies": {},
-  "main": "init.js",
-  "license": "MIT",
-  "repository": "brennanfee/sprout-bfee-blankrepo"
+    "name": "sprout-bfee-blankrepo",
+    "version": "0.0.1",
+    "description": "Sprout template to create a blank repo.",
+    "homepage": "https://github.com/brennanfee/sprout-bfee-blankrepo",
+    "author": {
+        "name": "Brennan Fee",
+        "email": "github@todaytechsoft.biz",
+        "url": "https://github.com/brennanfee"
+    },
+    "bugs": "https://github.com/brennanfee/sprout-bfee-blankrepo/issues",
+    "keywords": [
+        "sprout-template",
+        "bfee",
+        "blankrepo"
+    ],
+    "devDependencies": {
+        "eslint": "^4.19.1",
+        "eslint-config-prettier": "^2.9.0",
+        "eslint-plugin-prettier": "^2.6.0",
+        "prettier": "^1.12.1",
+        "sprout": "^1.2.1"
+    },
+    "dependencies": {
+        "github-username": "^4.1.0",
+        "underscore.string": "^3.3.4"
+    },
+    "main": "init.js",
+    "license": "MIT",
+    "repository": "brennanfee/sprout-bfee-blankrepo"
 }
