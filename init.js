@@ -190,6 +190,8 @@ function _executeCommands(utils, config) {
         })
         .then(() => {
             // Perform the initial commit
-            return utils.target.exec('git commit -m "Initial commit"')
+            return utils.target.exec(
+                'git commit -m "Initial commit" --author "Sprout Template <sprout-template@noplace.org>"'
+            )
         })
 }
