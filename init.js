@@ -2,7 +2,6 @@
 const str = require('underscore.string')
 const path = require('path')
 const ghGot = require('gh-got')
-const commandExists = require('command-exists').sync
 
 const licenses = [
     { name: 'Apache License 2.0', value: 'Apache-2.0' },
