@@ -8,7 +8,7 @@
     "author": "Brennan Fee <github@todaytechsoft.biz> (https://github.com/brennanfee)",
     "keywords": [
         "sprout-template",
-        "bfee",
+        "brennanfee",
         "blankrepo"
     ],
     "devDependencies": {
@@ -25,6 +25,7 @@
         "underscore.string": "^3.3.4"
     },
     "main": "init.js",
+    "private": true,
     "license": "Apache-2.0",
     "eslintConfig": {
         "env": {
