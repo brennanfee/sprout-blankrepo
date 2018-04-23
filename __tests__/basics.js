@@ -44,10 +44,10 @@ describe('NPM package scenario with license works', () => {
             '.gitattributes',
             '.gitignore',
             '.prettierignore',
-            'LICENSE',
+            'license',
             'package.json',
             'package-lock.json',
-            'README.md',
+            'readme.md',
         ]
 
         expected.forEach(file => {
