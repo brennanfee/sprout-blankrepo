@@ -12,6 +12,8 @@ const sprout = new Sprout(path.join(__dirname, 'config'))
 
 describe('NPM package scenario with license works', () => {
     beforeAll(() => {
+        jest.setTimeout(30000)
+
         let options = {
             locals: {
                 projectName: 'test-name',
