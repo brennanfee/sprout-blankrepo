@@ -9,7 +9,7 @@
     "keywords": [],
     "devDependencies": {},
     "dependencies": {},
-    <% if (license === 'UNLICENSED') { %>
+    <% if (license === 'UNLICENSED' || !isNpmPkg ) { %>
         "private": true,
     <% } %>
    "license": "<%- license %>",

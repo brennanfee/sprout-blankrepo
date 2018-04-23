@@ -6,7 +6,11 @@
     "homepage": "https://github.com/brennanfee/sprout-bfee-blankrepo#readme",
     "bugs": "https://github.com/brennanfee/sprout-bfee-blankrepo/issues",
     "author": "Brennan Fee <github@todaytechsoft.biz> (https://github.com/brennanfee)",
-    "keywords": ["sprout-template", "bfee", "blankrepo"],
+    "keywords": [
+        "sprout-template",
+        "bfee",
+        "blankrepo"
+    ],
     "devDependencies": {
         "eslint": "^4.19.1",
         "eslint-config-prettier": "^2.9.0",
@@ -25,7 +29,9 @@
             "node": true,
             "es6": true
         },
-        "extends": ["plugin:prettier/recommended"]
+        "extends": [
+            "plugin:prettier/recommended"
+        ]
     },
     "prettier": {
         "printWidth": 100,

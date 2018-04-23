@@ -62,6 +62,12 @@ exports.configure = [
         message: 'Project description:',
     },
     {
+        type: 'confirm',
+        name: 'isNpmPkg',
+        message: 'Is this project an NPM package?',
+        default: false,
+    },
+    {
         name: 'authorName',
         message: "Author's name:",
         default: () => {
@@ -112,12 +118,14 @@ exports.beforeRender = function(utils, config) {
     config.repositoryUrl = ''
     config.repositoryHomepageUrl = ''
     config.repositoryBugsUrl = ''
+    config.repositoryGitUrl = ''
 
     if (config.githubAccount) {
         config.repository = `github:${config.githubAccount}/${config.projectName}`
         config.repositoryUrl = `${config.authorUrl}/${config.projectName}`
         config.repositoryHomepageUrl = `${config.repositoryUrl}#readme`
         config.repositoryBugsUrl = `${config.repositoryUrl}/issues`
+        config.repositoryGitUrl = `git@github.com:${config.githubAccount}/${config.projectName}.git`
     }
 
     config.author = ''
@@ -159,8 +167,8 @@ function _executeCommands(utils, config) {
         })
         .then(() => {
             // Attach the remote repo if we can
-            if (config.repositoryUrl) {
-                return utils.target.exec(`git remote add origin ${config.repositoryUrl}`)
+            if (config.repositoryGitUrl) {
+                return utils.target.exec(`git remote add origin ${config.repositoryGitUrl}`)
             } else {
                 return Promise.resolve()
             }
