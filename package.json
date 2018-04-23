@@ -1,15 +1,14 @@
 {
-    "name": "sprout-bfee-blankrepo",
+    "name": "sprout-emptyrepo",
     "version": "1.0.0",
-    "description": "Sprout template to create a blank repo.",
-    "repository": "github:brennanfee/sprout-bfee-blankrepo",
-    "homepage": "https://github.com/brennanfee/sprout-bfee-blankrepo#readme",
-    "bugs": "https://github.com/brennanfee/sprout-bfee-blankrepo/issues",
+    "description": "Sprout template to create an empty starter project.",
+    "repository": "github:brennanfee/sprout-emptyrepo",
+    "homepage": "https://github.com/brennanfee/sprout-emptyrepo#readme",
+    "bugs": "https://github.com/brennanfee/sprout-emptyrepo/issues",
     "author": "Brennan Fee <github@todaytechsoft.biz> (https://github.com/brennanfee)",
     "keywords": [
         "sprout-template",
-        "brennanfee",
-        "blankrepo"
+        "emptyrepo"
     ],
     "devDependencies": {
         "eslint": "^4.19.1",
