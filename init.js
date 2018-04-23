@@ -1,3 +1,4 @@
+'use string'
 const str = require('underscore.string')
 const path = require('path')
 const ghGot = require('gh-got')
@@ -23,22 +24,26 @@ const globalConfig = {}
 exports.before = function(utils) {
     globalConfig.targetPath = utils.target.path
 
-    return ghGot('user').then(
-        result => {
+    return ghGot('user')
+        .then(result => {
             globalConfig.githubName = result.body.name
             globalConfig.githubEmail = result.body.email
             globalConfig.githubUrl = result.body.html_url
             globalConfig.githubUserName = result.body.login
-        },
-        () => {
-            return utils.target.exec('git config user.name').then(gitUserName => {
-                globalConfig.gitName = gitUserName[0].trim()
-                return utils.target.exec('git config user.email').then(gitUserEmail => {
+        })
+        .catch(() => {
+            return utils.target
+                .exec('git config user.name')
+                .then(gitUserName => {
+                    globalConfig.gitName = gitUserName[0].trim()
+                })
+                .then(() => {
+                    return utils.target.exec('git config user.email')
+                })
+                .then(gitUserEmail => {
                     globalConfig.gitEmail = gitUserEmail[0].trim()
-                }, () => '')
-            }, () => '')
-        }
-    )
+                })
+        })
 }
 
 exports.configure = [
@@ -148,7 +153,14 @@ exports.beforeRender = function(utils, config) {
 }
 
 exports.after = function(utils, config) {
-    return _writeLicenseFile(utils, config).then(_executeCommands(utils, config))
+    return utils.target
+        .rename('package.json.ejs', 'package.json')
+        .then(() => {
+            return _writeLicenseFile(utils, config)
+        })
+        .then(() => {
+            return _executeCommands(utils, config)
+        })
 }
 
 function _writeLicenseFile(utils, config) {
