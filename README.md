@@ -2,10 +2,10 @@
 
 [Sprout](https://github.com/carrot/sprout) template to create an empty starter project.
 
-## Files
+## Overview
 
-This repo creates a minimal repository that is a _very_ basic starting project. The following files are
-created:
+This template creates a minimal repository that is a _very_ basic starting project. The following
+files are created:
 
 *   .editorconfig
 *   .gitattributes
@@ -14,7 +14,7 @@ created:
 *   LICENSE - The license you selected during execution of the template.
 *   package.json - An initial NPM package file. This should still be used/needed even for non-Node
     packages.
-*   package-lock.json - Auto-created
+*   package-lock.json - Auto-created by NPM.
 *   README.md - An initial README for the project.
 
 ## GitHub use
