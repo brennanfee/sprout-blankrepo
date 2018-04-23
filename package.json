@@ -1,6 +1,6 @@
 {
     "name": "sprout-bfee-blankrepo",
-    "version": "0.0.1",
+    "version": "1.0.0",
     "description": "Sprout template to create a blank repo.",
     "repository": "github:brennanfee/sprout-bfee-blankrepo",
     "homepage": "https://github.com/brennanfee/sprout-bfee-blankrepo#readme",
