@@ -24,7 +24,6 @@ const globalConfig = {}
 
 exports.before = function(utils) {
     globalConfig.targetPath = utils.target.path
-    globalConfig.hasGit = commandExists('git')
 
     return ghGot('user')
         .then(result => {
@@ -34,19 +33,18 @@ exports.before = function(utils) {
             globalConfig.githubUserName = result.body.login
         })
         .catch(() => {
-            if (globalConfig.hasGit) {
-                return utils.target
-                    .exec('git config user.name')
-                    .then(gitUserName => {
-                        globalConfig.gitName = gitUserName[0].trim()
-                    })
-                    .then(() => {
-                        return utils.target.exec('git config user.email')
-                    })
-                    .then(gitUserEmail => {
-                        globalConfig.gitEmail = gitUserEmail[0].trim()
-                    })
-            }
+            return utils.target
+                .exec('git config user.name')
+                .then(gitUserName => {
+                    globalConfig.gitName = gitUserName[0].trim()
+                })
+                .then(() => {
+                    return utils.target.exec('git config user.email')
+                })
+                .then(gitUserEmail => {
+                    globalConfig.gitEmail = gitUserEmail[0].trim()
+                })
+                .catch(() => '')
         })
 }
 
@@ -179,26 +177,20 @@ function _executeCommands(utils, config) {
         .exec('npm install')
         .then(() => {
             // Now setup git
-            if (globalConfig.hasGit) {
-                return utils.target.exec('git init --quiet')
-            }
+            return utils.target.exec('git init --quiet')
         })
         .then(() => {
             // Attach the remote repo if we can
-            if (globalConfig.hasGit && config.repositoryGitUrl) {
+            if (config.repositoryGitUrl) {
                 return utils.target.exec(`git remote add origin ${config.repositoryGitUrl}`)
             }
         })
         .then(() => {
             // Stage the initial files
-            if (globalConfig.hasGit) {
-                return utils.target.exec('git add .')
-            }
+            return utils.target.exec('git add .')
         })
         .then(() => {
             // Perform the initial commit
-            if (globalConfig.hasGit) {
-                return utils.target.exec('git commit -m "Initial commit"')
-            }
+            return utils.target.exec('git commit -m "Initial commit"')
         })
 }
