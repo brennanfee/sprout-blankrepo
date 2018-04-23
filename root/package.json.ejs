@@ -9,11 +9,11 @@
     "keywords": [],
     "devDependencies": {},
     "dependencies": {},
-    <% if (license === 'UNLICENSED' || !isNpmPkg ) { %>
-        "private": true,
-    <% } %>
-   "license": "<%- license %>",
-   "scripts": {
-       "test": "echo 'Error: no tests specified' && exit 1"
-   }
+<% if (license === 'UNLICENSED' || !isNpmPkg ) { %>
+    "private": true,
+<% } %>
+    "license": "<%- license %>",
+    "scripts": {
+        "test": "echo 'Error: no tests specified' && exit 1"
+    }
 }
