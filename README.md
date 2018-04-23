@@ -10,6 +10,7 @@ created:
 *   .editorconfig
 *   .gitattributes
 *   .gitignore
+*   .prettierignore
 *   LICENSE - The license you selected during execution of the template.
 *   package.json - An initial NPM package file. This should still be used/needed even for non-Node
     packages.
