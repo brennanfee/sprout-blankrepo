@@ -190,6 +190,8 @@ function _executeCommands(utils, config) {
         })
         .then(() => {
             // Perform the initial commit
-            return utils.target.exec('git commit -m "Initial commit"')
+            if (!process.env.SPROUT_SKIP_COMMIT) {
+                return utils.target.exec('git commit -m "Initial commit"')
+            }
         }, () => '')
 }
