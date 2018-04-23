@@ -166,7 +166,7 @@ exports.after = function(utils, config) {
 
 function _writeLicenseFile(utils, config) {
     return utils.src.read(`licenses/${config.license}.txt`).then(content => {
-        utils.target.write('LICENSE', content, config)
+        return utils.target.write('LICENSE', content, config)
     })
 }
 
