@@ -7,8 +7,7 @@
     "bugs": "https://github.com/brennanfee/sprout-emptyrepo/issues",
     "author": "Brennan Fee <github@todaytechsoft.biz> (https://github.com/brennanfee)",
     "keywords": [
-        "sprout-template",
-        "emptyrepo"
+        "sprout-template"
     ],
     "devDependencies": {
         "eslint": "^4.19.1",

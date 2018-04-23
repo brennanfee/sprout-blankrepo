@@ -1,4 +1,4 @@
-'use string'
+'use strict'
 const str = require('underscore.string')
 const path = require('path')
 const ghGot = require('gh-got')
