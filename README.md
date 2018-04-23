@@ -1,10 +1,10 @@
-# sprout-bfee-blankrepo
+# sprout-emptyrepo
 
-[Sprout](https://github.com/carrot/sprout) template to create a blank Git repo.
+[Sprout](https://github.com/carrot/sprout) template to create an empty starter project.
 
 ## Files
 
-This repo creates a minimal repo that is a _very_ basic starting repository. The following files are
+This repo creates a minimal repository that is a _very_ basic starting project. The following files are
 created:
 
 *   .editorconfig
