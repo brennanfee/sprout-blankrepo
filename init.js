@@ -50,7 +50,7 @@ exports.before = function(utils) {
 exports.configure = [
     {
         name: 'projectName',
-        message: 'Your project name (repo name of folder name):',
+        message: 'Your project name (repo name or folder name):',
         default: () => {
             if (globalConfig.targetPath) {
                 return str.slugify(path.basename(globalConfig.targetPath))
