@@ -2,6 +2,7 @@
 const str = require('underscore.string')
 const path = require('path')
 const ghGot = require('gh-got')
+const commandExists = require('command-exists').sync
 
 const licenses = [
     { name: 'Apache License 2.0', value: 'Apache-2.0' },
@@ -23,6 +24,7 @@ const globalConfig = {}
 
 exports.before = function(utils) {
     globalConfig.targetPath = utils.target.path
+    globalConfig.hasGit = commandExists('git')
 
     return ghGot('user')
         .then(result => {
@@ -32,17 +34,19 @@ exports.before = function(utils) {
             globalConfig.githubUserName = result.body.login
         })
         .catch(() => {
-            return utils.target
-                .exec('git config user.name')
-                .then(gitUserName => {
-                    globalConfig.gitName = gitUserName[0].trim()
-                })
-                .then(() => {
-                    return utils.target.exec('git config user.email')
-                })
-                .then(gitUserEmail => {
-                    globalConfig.gitEmail = gitUserEmail[0].trim()
-                })
+            if (globalConfig.hasGit) {
+                return utils.target
+                    .exec('git config user.name')
+                    .then(gitUserName => {
+                        globalConfig.gitName = gitUserName[0].trim()
+                    })
+                    .then(() => {
+                        return utils.target.exec('git config user.email')
+                    })
+                    .then(gitUserEmail => {
+                        globalConfig.gitEmail = gitUserEmail[0].trim()
+                    })
+            }
         })
 }
 
@@ -175,22 +179,26 @@ function _executeCommands(utils, config) {
         .exec('npm install')
         .then(() => {
             // Now setup git
-            return utils.target.exec('git init --quiet')
+            if (globalConfig.hasGit) {
+                return utils.target.exec('git init --quiet')
+            }
         })
         .then(() => {
             // Attach the remote repo if we can
-            if (config.repositoryGitUrl) {
+            if (globalConfig.hasGit && config.repositoryGitUrl) {
                 return utils.target.exec(`git remote add origin ${config.repositoryGitUrl}`)
-            } else {
-                return Promise.resolve()
             }
         })
         .then(() => {
             // Stage the initial files
-            return utils.target.exec('git add .')
+            if (globalConfig.hasGit) {
+                return utils.target.exec('git add .')
+            }
         })
         .then(() => {
             // Perform the initial commit
-            return utils.target.exec('git commit -m "Initial commit"')
+            if (globalConfig.hasGit) {
+                return utils.target.exec('git commit -m "Initial commit"')
+            }
         })
 }
