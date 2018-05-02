@@ -47,6 +47,14 @@ exports.before = function(utils) {
         })
 }
 
+function _stripPeriodIfNeeded(str) {
+    if (str && str.endsWith('.')) {
+        return str.substr(0, str.length - 1)
+    } else {
+        return str
+    }
+}
+
 exports.configure = [
     {
         name: 'projectName',
@@ -66,6 +74,7 @@ exports.configure = [
     {
         name: 'projectDescription',
         message: 'Project description:',
+        filter: _stripPeriodIfNeeded,
     },
     {
         type: 'confirm',
@@ -107,10 +116,8 @@ exports.configure = [
 ]
 
 exports.beforeRender = function(utils, config) {
-    if (config.projectDescription && !config.projectDescription.endsWith('.')) {
-        config.projectDescription += '.'
-    } else {
-        config.projectDescription = `${config.projectName}.`
+    if (!config.projectDescription) {
+        config.projectDescription = config.projectName
     }
 
     config.authorUrl = ''
@@ -171,6 +178,7 @@ function _writeLicenseFile(utils, config) {
 }
 
 function _executeCommands(utils, config) {
+    console.log('Running npm install')
     // First run npm install
     return utils.target
         .exec('npm install')
@@ -194,4 +202,7 @@ function _executeCommands(utils, config) {
                 return utils.target.exec('git commit -m "Initial commit"')
             }
         }, () => '')
+        .then(() => {
+            console.log('Finished')
+        })
 }
