@@ -1,29 +1,29 @@
 {
-    "name": "<%- projectName %>",
-    "version": "0.0.1",
-    "description": "<%- projectDescription %>",
-    "repository": "<%- repository %>",
-    "homepage": "<%- repositoryHomepageUrl %>",
-    "bugs": "<%- repositoryBugsUrl %>",
-    "author": "<%- author %>",
-    "keywords": [],
-    "devDependencies": {
-        "prettier": "^1.13.5"
-    },
-    "dependencies": {},
+  "name": "<%- projectName %>",
+  "version": "0.0.1",
+  "description": "<%- projectDescription %>",
+  "repository": "<%- repository %>",
+  "homepage": "<%- repositoryHomepageUrl %>",
+  "bugs": "<%- repositoryBugsUrl %>",
+  "author": "<%- author %>",
+  "keywords": [],
+  "devDependencies": {
+    "prettier": "^1.13.5"
+  },
+  "dependencies": {},
 <% if (license === 'UNLICENSED' || !isNpmPkg ) { %>
-    "private": true,
+  "private": true,
 <% } %>
-    "license": "<%- license %>",
-    "prettier": {
-        "printWidth": 100,
-        "trailingComma": "es5",
-        "proseWrap": "always",
-        "semi": false,
-        "requirePragma": false,
-        "insertPragma": false
+  "license": "<%- license %>",
+  "prettier": {
+    "printWidth": 100,
+    "trailingComma": "es5",
+    "proseWrap": "always",
+    "semi": false,
+    "requirePragma": false,
+    "insertPragma": false
     },
-    "scripts": {
-        "test": "echo 'Error: no tests specified' && exit 1"
-    }
+  "scripts": {
+    "test": "echo 'Error: no tests specified' && exit 1"
+  }
 }
