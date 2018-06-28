@@ -7,12 +7,22 @@
     "bugs": "<%- repositoryBugsUrl %>",
     "author": "<%- author %>",
     "keywords": [],
-    "devDependencies": {},
+    "devDependencies": {
+        "prettier": "^1.13.5"
+    },
     "dependencies": {},
 <% if (license === 'UNLICENSED' || !isNpmPkg ) { %>
     "private": true,
 <% } %>
     "license": "<%- license %>",
+    "prettier": {
+        "printWidth": 100,
+        "trailingComma": "es5",
+        "proseWrap": "always",
+        "semi": false,
+        "requirePragma": false,
+        "insertPragma": false
+    },
     "scripts": {
         "test": "echo 'Error: no tests specified' && exit 1"
     }
