@@ -10,11 +10,11 @@
     "sprout-template"
   ],
   "devDependencies": {
-    "eslint": "^5.0.1",
+    "eslint": "^5.1.0",
     "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-prettier": "^2.6.1",
-    "jest": "^23.2.0",
-    "prettier": "^1.13.6",
+    "eslint-plugin-prettier": "^2.6.2",
+    "prettier": "^1.13.7",
+    "jest": "^23.4.0",
     "shelljs": "^0.8.2",
     "sprout": "^1.2.1"
   },
